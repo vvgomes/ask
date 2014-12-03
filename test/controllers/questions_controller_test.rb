@@ -18,10 +18,8 @@ class QuestionsControllerTest < ActionController::TestCase
   test 'creates a new key for user successfully' do
     post :create, :question => {
       :description => 'What is the best way to sort an array?'
-    }
-
+    } 
     assert Question.count == 2
-
     last = Question.last
     assert last.user = @user
     assert last.description == 'What is the best way to sort an array?'
