@@ -25,4 +25,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.email == 'dude@tw.com'
     assert User.count == 1
   end
+
+  test 'has many questions' do
+    author = User.new
+    question = Question.new(:user => author)
+    author.questions << question 
+    assert author.questions == [question]
+  end
 end
