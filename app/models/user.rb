@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   validates :email,
     :presence => true,
-#    :email => true,
+    :email => true,
     :uniqueness => true
 
   def self.from_omniauth(auth)

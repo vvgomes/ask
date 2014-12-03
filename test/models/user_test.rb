@@ -7,7 +7,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'must have a valid email' do
-    skip
     assert !User.new(:email => 'u').valid?
   end
 
