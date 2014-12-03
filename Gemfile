@@ -11,7 +11,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-saml'
-gem 'rails_12factor'
 
 group :test do
   gem 'sqlite3'
@@ -20,5 +19,9 @@ end
 
 group :development do
   gem 'spring'
+end
+
+group :development, :production do
+  gem 'rails_12factor'
 end
 
