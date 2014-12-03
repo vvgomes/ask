@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-saml'
+gem 'valid_email'
 
 group :test do
   gem 'sqlite3'
