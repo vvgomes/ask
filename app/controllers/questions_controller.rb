@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-
+    @question = Question.new(:user => current_user)
   end
 
   def create
