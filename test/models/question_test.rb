@@ -6,4 +6,9 @@ class QuestionTest < ActiveSupport::TestCase
     question = Question.new(:user => author)
     assert question.user == author
   end
+
+  test 'cannot be valid without an user' do
+    assert !Question.new.valid?
+    assert Question.new(:user => User.new).valid?
+  end
 end
