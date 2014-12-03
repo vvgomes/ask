@@ -3,12 +3,24 @@ class QuestionsController < ApplicationController
 
   end
 
+  def show
+
+  end
+
   def new
-    @question = Question.new(:user => current_user)
+    @question = Question.new
   end
 
   def create
-
+    @question = Question.new
+    @question.user = current_user
+    @question.description = params[:question][:description]
+    if @question.save
+      flash[:success] = 'Question added.'
+      redirect_to question_path(@question)
+    else
+      render :new
+    end
   end
 
   def edit
