@@ -11,6 +11,12 @@ class QuestionsControllerTest < ActionController::TestCase
     User.delete_all
   end
 
+  test 'lists all the questions' do
+    get :index
+    assert response.code == '200'
+    assert assigns(:questions)
+  end
+
   test 'provides a form to create a new question' do
     get :new
     assert response.code == '200'
