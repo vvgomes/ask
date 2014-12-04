@@ -23,7 +23,7 @@ class QuestionsControllerTest < ActionController::TestCase
     assert assigns(:question).new_record?
   end
 
-  test 'creates a new key for user successfully' do
+  test 'creates a new question for user successfully' do
     post :create, :question => {
       :description => 'Do you believe in god?'
     } 
