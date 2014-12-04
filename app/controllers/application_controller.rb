@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   def index
     authenticate!
+    redirect_to questions_path
   end
 
   private

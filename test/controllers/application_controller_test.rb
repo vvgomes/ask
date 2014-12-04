@@ -7,7 +7,6 @@ class ApplicationControllerTest < ActionController::TestCase
 
   test 'shows home page' do
     get :index
-    assert response.code == '200'
-    assert_template :index
+    assert_redirected_to questions_path
   end
 end
