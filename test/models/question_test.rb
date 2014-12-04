@@ -3,12 +3,14 @@ require 'test_helper'
 class QuestionTest < ActiveSupport::TestCase
   test 'belongs to an user' do
     author = User.new
-    question = Question.new(:user => author)
-    assert question.user == author
+    q = Question.new(:user => author)
+    assert q.user == author
   end
 
-  test 'cannot be valid without an user' do
-    assert !Question.new.valid?
-    assert Question.new(:user => User.new).valid?
+  test 'must have a description' do
+    q = Question.new(:user => User.new)
+    assert !q.valid?
+    q.description = 'Do you believe in god?'
+    assert q.valid?
   end
 end
