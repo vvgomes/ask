@@ -2,11 +2,13 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
   setup do
+    @user = User.create(:email => 'dude@tw.com')
+    session[:user_id] = @user.id
+  end
+
+  teardown do
     Question.delete_all
     User.delete_all
-    @user = User.create(:email => 'dude@tw.com')
-    @question = Question.create(:user => @user)
-    session[:user_id] = @user.id
   end
 
   test 'displays a form to create a new question' do
@@ -17,12 +19,11 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test 'creates a new key for user successfully' do
     post :create, :question => {
-      :description => 'What is the best way to sort an array?'
+      :description => 'Do you believe in god?'
     } 
-    assert Question.count == 2
     last = Question.last
     assert last.user = @user
-    assert last.description == 'What is the best way to sort an array?'
+    assert last.description == 'Do you believe in god?'
     assert_redirected_to question_path(last)
   end
 end
