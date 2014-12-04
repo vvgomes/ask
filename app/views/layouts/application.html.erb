@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Ask</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/lumen/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <a class="navbar-brand" href="/">Ask</a>
+    </nav>
+  </header>
 
-<%= yield %>
+  <main class="container">
+    <%= yield %>
+  </main>
 
+  <footer>
+  </footer>
 </body>
 </html>
