@@ -13,10 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    current_user || redirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
+    current_user || 
+    credirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
   end
 
   def forbid!
-    render :status => :forbidden, :text => 'You do not have rights to perform this operation.'
+    render :status => :forbidden, 
+      :text => 'You do not have rights to perform this operation.'
   end
 end
