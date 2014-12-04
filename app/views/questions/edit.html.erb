@@ -1,12 +1,12 @@
 <article class="panel panel-default">
   <header class="panel-heading">
-    <h1>New Question</h1>
+    <h1>Edit Question</h1>
   </header>
   <article class="panel-body">
     <%= render 'form',
-      :url => questions_path,
-      :method => 'post',
-      :back => questions_path
+      :url => question_path(@question),
+      :method => 'put',
+      :back => question_path(@question)
     %>
   </article>
 </article>

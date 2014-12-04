@@ -1,0 +1,14 @@
+<ul>
+  <% @questions.each do |q| %>
+    <li>
+      <article>
+        <p>
+          <%= q.description %>
+        </p>
+        <small>
+          <%= q.user %>
+        </small>
+      </article>
+    </li>
+  <% end %>
+</ul>
