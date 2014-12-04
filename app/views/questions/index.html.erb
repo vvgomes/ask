@@ -1,14 +1,19 @@
-<ul>
-  <% @questions.each do |q| %>
-    <li>
-      <article>
-        <p>
-          <%= q.description %>
-        </p>
-        <small>
-          <%= q.user %>
-        </small>
-      </article>
-    </li>
-  <% end %>
-</ul>
+<% @questions.each do |q| %>
+  <article class="panel panel-default">
+    <blockquote class="panlel-body">
+      <em><%= q.description %></em>
+    </blockquote>
+    <footer class="panel-footer">
+      <a href="<%= user_path(q.user) %>">
+        <%= gravatar_image_tag q.user.email,
+          :alt => q.user.email,
+          :style => 'border-radius: 15px;',
+          :gravatar => { 
+            :secure => true,
+            :size => 30
+          }
+        %>
+      </a>
+    </footer>
+  </article>
+<% end %>
