@@ -11,7 +11,7 @@ class QuestionsControllerTest < ActionController::TestCase
     User.delete_all
   end
 
-  test 'displays a form to create a new question' do
+  test 'provides a form to create a new question' do
     get :new
     assert response.code == '200'
     assert assigns(:question).new_record?
