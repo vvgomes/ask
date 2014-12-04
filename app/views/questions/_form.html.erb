@@ -1,27 +1,33 @@
 <%= form_for(@question,
   :url => url,
   :method => method,
+  :class => 'panel',
   :role => 'form') do |f| %>
 
-  <p class='row form-group col-md-6'>
-    <label>Question: </label>
-    <%= f.text_area :description,
-      :rows => 4,
-      :autofocus => true,
-      :required => true,
-      :class => 'form-control' %>
-  </p>
+  <fieldset>
+    <legend>
+      <%= method == 'post' ? 'New Question' : 'Edit Question' %>
+    </legend>
+    <p class='form-group'>
+      <%= f.text_area :description,
+        :rows => 4,
+        :autofocus => true,
+        :required => true,
+        :placeholder => 'Your question...',
+        :class => 'form-control' %>
+    </p>
 
-  <p class='row form-group col-md-6'>
-    <%= button_tag :type => 'submit',
-      :class => 'btn btn-success btn-sm' do %>
-      <span class="glyphicon glyphicon-ok"></span>
-      <span class="label">Save</span>
-    <% end %>
+    <p class='form-group'>
+      <%= button_tag :type => 'submit',
+        :class => 'btn btn-success btn-sm' do %>
+        <span class="glyphicon glyphicon-ok"></span>
+        <span class="label">Save</span>
+      <% end %>
 
-    <%= link_to back, :class => 'btn btn-warning btn-sm' do %>
-      <span class="glyphicon glyphicon-remove"></span>
-      <span class="label">Cancel</span>
-    <% end %>
-  </p>
+      <%= link_to back, :class => 'btn btn-warning btn-sm' do %>
+        <span class="glyphicon glyphicon-remove"></span>
+        <span class="label">Cancel</span>
+      <% end %>
+    </p>
+  </fieldset>
 <% end %>
