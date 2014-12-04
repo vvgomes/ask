@@ -1,19 +1,26 @@
-<% @questions.each do |q| %>
-  <article class="panel panel-default">
-    <blockquote class="panlel-body">
-      <em><%= q.description %></em>
-    </blockquote>
-    <footer class="panel-footer">
-      <a href="<%= user_path(q.user) %>">
-        <%= gravatar_image_tag q.user.email,
-          :alt => q.user.email,
-          :style => 'border-radius: 15px;',
-          :gravatar => { 
-            :secure => true,
-            :size => 30
-          }
-        %>
-      </a>
-    </footer>
-  </article>
-<% end %>
+<ul class="list-unstyled">
+  <% @questions.each do |q| %>
+    <li class="col-sm-6 col-lg-4">
+      <article class="panel panel-default">
+        <hr />
+        <%= link_to question_path(q) do %>
+          <blockquote class="panlel-body">
+            <em class="lead"><%= q.description %></em>
+          </blockquote>
+        <% end %>
+        <footer class="panel-footer">
+          <a href="<%= user_path(q.user) %>">
+            <%= gravatar_image_tag q.user.email,
+              :alt => q.user.email,
+              :style => 'border-radius: 15px;',
+              :gravatar => { 
+                :secure => true,
+                :size => 30
+              }
+            %>
+          </a>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>
