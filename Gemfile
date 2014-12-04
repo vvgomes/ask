@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-saml'
 gem 'valid_email'
+gem 'gravatar_image_tag'
 
 group :test do
   gem 'sqlite3'
