@@ -32,4 +32,10 @@ class QuestionsControllerTest < ActionController::TestCase
     assert last.description == 'Do you believe in god?'
     assert_redirected_to question_path(last)
   end
+
+  test 'does not create a question with invalid params' do
+    post :create, :question => { :description => '' } 
+    assert response.code == '200'
+    assert Question.last.nil?
+  end
 end
