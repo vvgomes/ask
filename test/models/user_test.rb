@@ -3,11 +3,16 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   test 'must have an email to be valid' do
     assert !User.new.valid?
-    assert User.new(:email => 'u@tw.com').valid?
+    assert User.new(:email => 'dude@tw.com').valid?
   end
 
   test 'must have a valid email' do
     assert !User.new(:email => 'u').valid?
+  end
+
+  test 'cannot have the same email as an existing user' do
+    User.create(:email => 'dude@tw.com')
+    assert !User.new(:email => 'dude@tw.com').valid?
   end
 
   test 'is created from omniauth' do
