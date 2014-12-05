@@ -36,4 +36,9 @@ class UserTest < ActiveSupport::TestCase
     author.questions << question 
     assert author.questions == [question]
   end
+
+  test 'has a username based on email' do
+    user = User.new(:email => 'dude@tw.com')
+    assert user.username == 'dude'
+  end
 end
