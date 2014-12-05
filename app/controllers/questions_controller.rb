@@ -25,10 +25,12 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    return forbid! unless @question.user == current_user
   end
 
   def update
     @question = Question.find(params[:id])
+    return forbid! unless @question.user == current_user
     @question.description = params[:question][:description]
     if @question.save
       flash[:success] = 'Question updated.'
@@ -40,7 +42,9 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
+    q = Question.find(params[:id])
+    return forbid! unless q.user == current_user
+    q.destroy
     flash[:success] = 'Question removed.'
     redirect_to questions_path
   end
