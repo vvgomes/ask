@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :forbid!
 
   def index
-    authenticate!
     redirect_to questions_path
   end
 

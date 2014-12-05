@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   def index
+    authenticate!
     @questions = Question.all
   end
 
