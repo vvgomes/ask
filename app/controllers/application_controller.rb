@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     current_user || 
-    credirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
+    redirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
   end
 
   def forbid!
