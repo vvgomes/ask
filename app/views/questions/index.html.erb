@@ -1,4 +1,11 @@
-<ul class="list-unstyled">
+<p class="row col-xs-12">
+  <%= link_to new_question_path,
+    :class => 'btn btn-success btn-sm pull-left' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <span class="label">Add Question</span>
+  <% end %>
+</p>
+<ul class="row list-unstyled">
   <% @questions.each do |q| %>
     <li class="col-sm-6 col-lg-4">
       <section class="panel panel-default">
