@@ -1,10 +1,10 @@
 <ul class="list-unstyled">
   <% @questions.each do |q| %>
     <li class="col-sm-6 col-lg-4">
-      <article class="panel panel-default">
+      <section class="panel panel-default">
         <hr />
         <%= link_to question_path(q) do %>
-          <blockquote class="panlel-body">
+          <blockquote class="panlel-body" style="height: 60px;">
             <em class="lead"><%= q.description %></em>
           </blockquote>
         <% end %>
