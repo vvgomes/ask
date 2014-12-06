@@ -19,7 +19,9 @@
 
 <% if @question.user == current_user %>
   <section>
-    <%= link_to question_path(@question), :class => 'btn btn-info btn-sm' do %>
+    <%= link_to edit_question_path(@question),
+      :class => 'btn btn-info btn-sm pull-left',
+      :style => 'margin-right:3px;' do %>
       <span class="glyphicon glyphicon-pencil"></span>
       <span class="label">Edit</span>
     <% end %>
