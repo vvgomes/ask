@@ -1,0 +1,34 @@
+<section class="panel panel-default">
+  <hr />
+  <blockquote>
+    <em class="lead"><%= @question.description %></em>
+  </blockquote>
+  <footer class="panel-footer">
+    <a href="<%= user_path(@question.user) %>">
+      <%= gravatar_image_tag @question.user.email,
+        :alt => @question.user.email,
+        :style => 'border-radius: 15px;',
+        :gravatar => { 
+          :secure => true,
+          :size => 30
+        }
+      %>
+    </a>
+  </footer>
+</section>
+
+<% if @question.user == current_user %>
+  <section>
+    <%= link_to question_path(@question), :class => 'btn btn-info btn-sm' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="label">Edit</span>
+    <% end %>
+    <%= button_to(@user, :method => :delete,
+      :class => 'btn btn-danger btn-sm',
+      :onclick => "if(!confirm('Are you sure?')){event.preventDefault(); return false;}",
+      :alt => 'Remove User') do %>
+      <span class="glyphicon glyphicon-trash"></span>
+      <span class="label">Remove</span>
+    <% end %>
+  </section>
+<% end %>
