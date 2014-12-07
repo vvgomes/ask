@@ -13,4 +13,11 @@ class QuestionTest < ActiveSupport::TestCase
     q.description = 'Do you believe in god?'
     assert q.valid?
   end
+
+  test 'has many likes' do
+    like = Like.new
+    q = Question.new
+    q.likes << like
+    assert q.likes == [like]
+  end
 end
