@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     :as => 'signout',
     :via => [:get, :post]
 
-  resources :users
   resources :questions
+
   root :to => 'application#index'
 end
