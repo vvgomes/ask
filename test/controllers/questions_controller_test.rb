@@ -110,4 +110,9 @@ class QuestionsControllerTest < ActionController::TestCase
     assert Question.count == 2
     assert response.code == '403'
   end
+
+  test 'can filter questions by user' do
+    get :index, :user_id => @dude.id
+    assert assigns(:questions) == [@dude_question]
+  end
 end
