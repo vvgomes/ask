@@ -114,5 +114,6 @@ class QuestionsControllerTest < ActionController::TestCase
   test 'can filter questions by user' do
     get :index, :user_id => @dude.id
     assert assigns(:questions) == [@dude_question]
+    assert assigns(:user) == @dude
   end
 end

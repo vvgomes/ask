@@ -3,7 +3,10 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    @questions = @questions.where(:user_id => params[:user_id]) if params[:user_id]
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @questions = @questions.where(:user => @user)
+    end
   end
 
   def show
