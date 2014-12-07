@@ -7,8 +7,9 @@ class QuestionsControllerTest < ActionController::TestCase
       :user => @me,
       :description => 'Do you believe in God?'
     })
-    @someone_else_question = Question.create({
-      :user => User.create(:email => 'notme@tw.com'),
+    @dude = User.create(:email => 'dude@tw.com')
+    @dude_question = Question.create({
+      :user => @dude,
       :description => 'Do you believe in God?'
     })
     session[:user_id] = @me.id
@@ -61,7 +62,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'does not provide a form to edit a question from someone else' do
-    get :edit, :id => @someone_else_question.id
+    get :edit, :id => @dude_question.id
     assert response.code == '403'
   end
 
@@ -88,7 +89,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'does not update a question from someone else' do
-    put :update, :id => @someone_else_question.id,
+    put :update, :id => @dude_question.id,
       :question => {
         :description => '' 
       } 
@@ -105,7 +106,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'does not remove a question from someone else' do
-    delete :destroy, :id => @someone_else_question.id
+    delete :destroy, :id => @dude_question.id
     assert Question.count == 2
     assert response.code == '403'
   end

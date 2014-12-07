@@ -4,7 +4,7 @@
     <em class="lead"><%= @question.description %></em>
   </blockquote>
   <footer class="panel-footer">
-    <a href="<%= user_path(@question.user) %>">
+    <a href="<%= questions_path(:user_id => @question.user) %>">
       <%= gravatar_image_tag @question.user.email,
         :alt => @question.user.email,
         :style => 'border-radius: 15px;',

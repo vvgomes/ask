@@ -1,10 +1,9 @@
-<p class="row col-xs-12">
-  <%= link_to new_question_path,
-    :class => 'btn btn-success btn-sm pull-left' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    <span class="label">Add Question</span>
+<h1 class="row">
+  Questions
+  <% if @user %>
+    <small>by <%= @user.username %></small>
   <% end %>
-</p>
+</h1>
 <ul class="row list-unstyled">
   <% @questions.each do |q| %>
     <li class="col-sm-6 col-lg-4">
@@ -16,7 +15,7 @@
           </blockquote>
         <% end %>
         <footer class="panel-footer">
-          <a href="<%= user_path(q.user) %>">
+          <a href="<%= questions_path(:user_id => q.user.id) %>">
             <%= gravatar_image_tag q.user.email,
               :alt => q.user.email,
               :style => 'border-radius: 15px;',
