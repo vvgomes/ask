@@ -41,4 +41,11 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(:email => 'dude@tw.com')
     assert user.username == 'dude'
   end
+
+  test 'has many likes' do
+    like = Like.new
+    user = User.new
+    user.likes << like
+    assert user.likes == [like]
+  end
 end
