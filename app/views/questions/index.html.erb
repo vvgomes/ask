@@ -3,23 +3,22 @@
     <li class="col-sm-6 col-lg-4">
       <section class="panel panel-default">
         <hr />
-        <%= link_to question_path(q) do %>
-          <blockquote class="panlel-body" style="height: 60px;">
-            <em class="lead"><%= q.description %></em>
-          </blockquote>
-        <% end %>
+        <blockquote class="panlel-body" style="height: 60px;">
+          <em class="lead"><%= q.description %></em>
+        </blockquote>
         <footer class="panel-footer">
-          <a href="<%= questions_path(:user_id => q.user.id) %>">
-            <%= gravatar_image_tag q.user.email,
-              :alt => q.user.username,
-              :title => q.user.username,
-              :class => 'img-circle',
-              :gravatar => { 
-                :secure => true,
-                :size => 30
-              }
-            %>
+
+          <%= gravatar_image_tag q.user.email,
+            :alt => q.user.username,
+            :title => q.user.username,
+            :class => 'img-circle',
+            :gravatar => { :secure => true, :size => 30 }
+          %>
+
+          <a href="#" class="pull-right like <%= 'liked' if current_user.likes?(q) %>">
+            <span class="glyphicon glyphicon-heart"></span>
           </a>
+
         </footer>
       </article>
     </li>
