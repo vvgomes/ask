@@ -7,13 +7,18 @@
           <em class="lead"><%= q.description %></em>
         </blockquote>
         <footer class="panel-footer">
-
           <%= gravatar_image_tag q.user.email,
             :alt => q.user.username,
-            :title => q.user.username,
             :class => 'img-circle',
+            :rel => 'tooltip',
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'bottom',
+            :title => '',
+            'data-original-title' => q.user.username,
             :gravatar => { :secure => true, :size => 30 }
           %>
+
+          <!-- tags will go here -->
 
           <a href="#" class="pull-right like <%= 'liked' if current_user.likes?(q) %>">
             <span class="glyphicon glyphicon-heart"></span>
@@ -24,3 +29,6 @@
     </li>
   <% end %>
 </ul>
+<script type="text/javascript">
+  $(function () { $("[rel='tooltip']").tooltip(); });
+</script>
