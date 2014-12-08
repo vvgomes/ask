@@ -11,8 +11,9 @@
         <footer class="panel-footer">
           <a href="<%= questions_path(:user_id => q.user.id) %>">
             <%= gravatar_image_tag q.user.email,
-              :alt => q.user.email,
-              :style => 'border-radius: 15px;',
+              :alt => q.user.username,
+              :title => q.user.username,
+              :class => 'img-circle',
               :gravatar => { 
                 :secure => true,
                 :size => 30
