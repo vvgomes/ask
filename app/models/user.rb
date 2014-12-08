@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def username
     email.split('@').first
   end
+
+  def likes?(question)
+    likes.where(:question => question).exists?
+  end
 end
