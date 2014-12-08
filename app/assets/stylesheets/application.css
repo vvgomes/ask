@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+a.like {
+  font-size: 1.9em;
+  color: pink; 
+}
+
+a.like:hover {
+  color: #d9534f;
+}
+
+a.like.liked {
+  color: #d9534f;
+}
+
+a.like.liked:hover {
+  color: pink;
+}
+
