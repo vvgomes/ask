@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     :as => 'favorite_questions',
     :via => :get
 
+  resources :likes, :only => [:create, :destroy]
+
   root :to => 'application#index'
 end
