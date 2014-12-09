@@ -32,14 +32,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="/">
+          <li class="">
+            <a href="<%= root_path %>">
               <span class="glyphicon glyphicon-home"></span>
               &nbsp;
               <span>Home</span>
             </a>
           </li>
-          <li>
+          <li class="">
             <a href="<%= questions_path(:user_id => current_user.id) %>">
               <span class="glyphicon glyphicon-user"></span>
               &nbsp;
