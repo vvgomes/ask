@@ -10,5 +10,13 @@ Rails.application.routes.draw do
 
   resources :questions
 
+  match 'mine',
+    :to => 'questions#mine',
+    :via => :get
+
+  match 'favorite',
+    :to => 'questions#favorite',
+    :via => :get
+
   root :to => 'application#index'
 end
