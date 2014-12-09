@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
   match 'mine',
     :to => 'questions#mine',
+    :as => 'my_questions',
     :via => :get
 
   match 'favorite',
     :to => 'questions#favorite',
+    :as => 'favorite_questions',
     :via => :get
 
   root :to => 'application#index'
