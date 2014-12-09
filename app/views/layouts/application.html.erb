@@ -32,21 +32,21 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav">
-          <li class="">
+          <li class="<%= 'active' if request.env['PATH_INFO'] == questions_path %>">
             <a href="<%= root_path %>">
               <span class="glyphicon glyphicon-home"></span>
               &nbsp;
               <span>Home</span>
             </a>
           </li>
-          <li class="">
+          <li class="<%= 'active' if request.env['PATH_INFO'] == my_questions_path %>">
             <a href="<%= my_questions_path %>">
               <span class="glyphicon glyphicon-user"></span>
               &nbsp;
               <span>My Questions</span>
             </a>
           </li>
-          <li>
+          <li class="<%= 'active' if request.env['PATH_INFO'] == favorite_questions_path %>">
             <a href="<%= favorite_questions_path %>">
               <span class="glyphicon glyphicon-heart"></span>
               &nbsp;
