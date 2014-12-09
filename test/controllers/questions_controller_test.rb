@@ -10,7 +10,7 @@ class QuestionsControllerTest < ActionController::TestCase
     @dude = User.create(:email => 'dude@tw.com')
     @dude_question = Question.create({
       :user => @dude,
-      :description => 'Do you believe in God?'
+      :description => 'What is your favorite language?'
     })
     session[:user_id] = @me.id
   end
