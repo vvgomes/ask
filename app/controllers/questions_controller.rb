@@ -3,10 +3,6 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @questions = @questions.where(:user => @user)
-    end
   end
 
   def show
@@ -44,7 +40,6 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -53,5 +48,15 @@ class QuestionsController < ApplicationController
     q.destroy
     flash[:success] = 'Question removed.'
     redirect_to questions_path
+  end
+
+  def mine
+    @questions = Question.where(:user => current_user)
+    render :index
+  end
+
+  def favorite
+    @questions = Like.where(:user => current_user).map(&:question)
+    render :index
   end
 end

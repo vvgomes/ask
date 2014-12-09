@@ -111,9 +111,18 @@ class QuestionsControllerTest < ActionController::TestCase
     assert response.code == '403'
   end
 
-  test 'can filter questions by user' do
-    get :index, :user_id => @dude.id
+  test 'gives me my questions' do
+    get :mine
+    assert assigns(:questions) == [@my_question]
+    assert response.code == '200'
+    assert_template :index
+  end
+
+  test 'gives me my favorite questions' do
+    Like.create(:user => @me, :question => @dude_question)
+    get :favorite
     assert assigns(:questions) == [@dude_question]
-    assert assigns(:user) == @dude
+    assert response.code == '200'
+    assert_template :index
   end
 end
