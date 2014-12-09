@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
     q = Question.find(params[:id])
     return forbid! unless q.user == current_user
     q.destroy
-    flash[:success] = 'Question removed.'
+    flash[:notice] = 'Question removed.'
     redirect_to questions_path
   end
 

@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     like = Like.find(params[:id])
     return forbid! unless like.user == current_user
     like.destroy
-    flash[:success] = 'Question removed from your favorites.'
+    flash[:notice] = 'Question removed from your favorites.'
     redirect_to(request.referer || root_path)
   end
 end
