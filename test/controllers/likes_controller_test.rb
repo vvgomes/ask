@@ -22,7 +22,7 @@ class LikesControllerTest < ActionController::TestCase
   end
 
   test 'allows me to like a question I did not like yet' do
-    post :create, :like => { :question_id => @not_liked_question.id }
+    post :create, :question_id => @not_liked_question.id
     assert Like.count == 2
     last = Like.last
     assert last.user == @me
@@ -30,7 +30,7 @@ class LikesControllerTest < ActionController::TestCase
   end
 
   test 'does not allow me to like a question again' do
-    post :create, :like => { :question_id => @liked_question.id }
+    post :create, :question_id => @liked_question.id
     assert Like.count == 1
   end
 
