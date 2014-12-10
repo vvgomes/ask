@@ -1,8 +1,10 @@
 <%= form_for(@question,
   :url => url,
   :method => method,
-  :class => 'panel',
-  :role => 'form') do |f| %>
+  :html => {
+    :class => 'row col-sm-10 col-md-8',
+    :role => 'form'
+  }) do |f| %>
 
   <fieldset>
     <legend>
