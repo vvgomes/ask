@@ -13,7 +13,9 @@
       <section class="panel panel-default">
         <hr />
         <blockquote class="panlel-body" style="height: 60px;">
-          <em class="lead"><%= q.description %></em>
+          <em class="lead">
+            <%= link_to q.description, question_path(q) %>
+        </em>
         </blockquote>
         <footer class="panel-footer">
           <%= gravatar_image_tag q.user.email,
