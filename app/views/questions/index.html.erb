@@ -1,10 +1,12 @@
-<p class="row container col-xs-12">
-  <%= link_to new_question_path, :class => 'btn btn-success btn-sm' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    &nbsp;
-    <span>Add Question</span>
-  <% end %>
-</p>
+<section class="row container">
+  <p>
+    <%= link_to new_question_path, :class => 'btn btn-info btn-sm' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      &nbsp;
+      <span>Add Question</span>
+    <% end %>
+  </p>
+</section>
 <ul class="row list-unstyled">
   <% @questions.each do |q| %>
     <li class="col-sm-6 col-lg-4">
