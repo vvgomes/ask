@@ -21,7 +21,14 @@
       <% like_config = like_or_dislike(@question) %>
       <%= link_to(like_config[:path], :method => like_config[:method],
         :class => "pull-right like #{like_config[:class]}") do %>
-        <span class="glyphicon glyphicon-heart"></span>
+        <span
+          class="glyphicon glyphicon-heart"
+          rel="tooltip"
+          data-toggle="tooltip"
+          data-placement="bottom"
+          title=""
+          data-original-title="<%= @question.likes.count %>"
+        ></span>
       <% end %>
     </a>
   </footer>
