@@ -28,9 +28,9 @@
       ></span>
     <% end %>
 
-    <ul class="list-inline">
+    <ul class="list-inline tags">
       <% @question.tag_list.each do |tag| %>
-        <li class="label label-default"><%= tag %></li>
+        <li class="label label-primary">#<%= tag %></li>
       <% end %>
     </ul>
   </footer>
