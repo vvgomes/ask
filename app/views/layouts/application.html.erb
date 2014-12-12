@@ -134,13 +134,19 @@
       var popularTags = '<%= popular_tags.join(',') %>'.split(',');
 
       $('#question_tag_list')
-        .select2({ tags: popularTags })
+        .select2({
+          tags: popularTags,
+          maximumSelectionSize: 3
+        })
         .select2('container')
         .find('ul.select2-choices')
         .addClass('form-control');
 
       $('#tag_filter')
-        .select2({ tags: popularTags })
+        .select2({
+          tags: popularTags,
+          maximumSelectionSize: 3
+        })
         .select2('container')
         .find('ul.select2-choices')
         .addClass('form-control');
