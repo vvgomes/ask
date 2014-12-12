@@ -14,8 +14,9 @@
  *= require_self
  */
 
-span.navbar-brand {
-  font-size: 1.7em;
+span.navbar-brand strong {
+  font-size: 1.2em;
+  color: #F37934;
 }
 
 a.like {
