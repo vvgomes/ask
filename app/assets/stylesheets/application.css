@@ -61,8 +61,6 @@ ul.tags {
 }
 
 ul.tags li {
-  margin-right: 5px;
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 1em;
+  padding: 0;
 }
+

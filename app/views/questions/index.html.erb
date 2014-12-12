@@ -43,7 +43,9 @@
 
           <ul class="list-inline tags">
             <% q.tag_list.each do |tag| %>
-              <li class="label label-primary">#<%= tag %></li>
+              <li>
+                <%= link_to "##{tag}", questions_path(:tag_filter => tag), :class => "label label-primary" %>
+              </li>
             <% end %>
           </ul>
         </footer>
