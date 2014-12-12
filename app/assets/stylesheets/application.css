@@ -50,7 +50,7 @@ fieldset legend {
 }
 
 .select2-container ul.select2-choices {
-  min-width: 300px;
+  min-width: 340px;
   padding-top: 2px;
   border: 1px solid #e7e7e7;
 }
