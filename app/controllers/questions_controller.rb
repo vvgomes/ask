@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @question.user = current_user
     @question.description = params[:question][:description]
+    @question.tag_list = params[:question][:tag_list]
     if @question.save
       flash[:success] = 'Question added.'
       redirect_to question_path(@question)
@@ -34,6 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     return forbid! unless @question.user == current_user
     @question.description = params[:question][:description]
+    @question.tag_list = params[:question][:tag_list]
     if @question.save
       flash[:success] = 'Question updated.'
       redirect_to question_path(@question)

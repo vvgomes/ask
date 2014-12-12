@@ -5,12 +5,14 @@ class QuestionsControllerTest < ActionController::TestCase
     @me = User.create(:email => 'me@tw.com')
     @my_question = Question.create({
       :user => @me,
-      :description => 'Do you believe in God?'
+      :description => 'Do you believe in God?',
+      :tag_list => ['p3', 'religion']
     })
     @dude = User.create(:email => 'dude@tw.com')
     @dude_question = Question.create({
       :user => @dude,
-      :description => 'What is your favorite language?'
+      :description => 'What is your favorite language?',
+      :tag_list => ['programming']
     })
     session[:user_id] = @me.id
   end
@@ -40,12 +42,14 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test 'creates a new question successfully' do
     post :create, :question => {
-      :description => 'Why?'
+      :description => 'Why?',
+      :tag_list => 'oo,ruby'
     } 
     assert Question.count == 3
     last = Question.last
     assert last.user = @me
     assert last.description == 'Why?'
+    assert last.tag_list == ['oo', 'ruby']
     assert_redirected_to question_path(last)
   end
 
@@ -69,11 +73,13 @@ class QuestionsControllerTest < ActionController::TestCase
   test 'updates an existing question successfully' do
     put :update, :id => @my_question.id,
       :question => {
-        :description => 'Do you believe in Buda?'
+        :description => 'Do you believe in Buda?',
+        :tag_list => 'religion,buda'
       } 
     assert Question.count == 2
     updated = Question.find(@my_question.id)
     assert updated.description == 'Do you believe in Buda?'
+    assert updated.tag_list == ['religion', 'buda']
     assert_redirected_to question_path(updated)
   end
 
