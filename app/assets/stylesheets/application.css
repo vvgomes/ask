@@ -22,6 +22,7 @@ span.navbar-brand strong {
 a.like {
   font-size: 1.9em;
   color: pink; 
+  height: 30px;
 }
 
 a.like:hover {

@@ -3,10 +3,10 @@
   <blockquote>
     <em class="lead"><%= @question.description %></em>
   </blockquote>
-  <footer class="panel-footer">
+  <footer class="clearfix panel-footer text-center">
     <%= gravatar_image_tag @question.user.email,
       :alt => @question.user.email,
-      :class => 'img-circle',
+      :class => 'img-circle pull-left',
       :rel => 'tooltip',
       'data-toggle' => 'tooltip',
       'data-placement' => 'bottom',
@@ -14,8 +14,6 @@
       'data-original-title' => @question.user.username,
       :gravatar => { :secure => true, :size => 30 }
     %>
-
-    <!-- tags will go here -->
 
     <% like_config = like_or_dislike(@question) %>
     <%= link_to(like_config[:path], :method => like_config[:method],
@@ -29,6 +27,12 @@
         data-original-title="<%= @question.likes.count %>"
       ></span>
     <% end %>
+
+    <ul class="list-inline">
+      <% @question.tag_list.each do |tag| %>
+        <li class="label label-default"><%= tag %></li>
+      <% end %>
+    </ul>
   </footer>
 </section>
 
