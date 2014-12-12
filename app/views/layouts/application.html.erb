@@ -131,6 +131,8 @@
   <script type="text/javascript">
     $(function() {
       $("[rel='tooltip']").tooltip();
+      $('#question_tag_list').select2({ tags: ["P3", "technical", "OO"] });
+      $('#question_tag_list').select2("container").find("ul.select2-choices").addClass('form-control');
     });
   </script>
 </body>
