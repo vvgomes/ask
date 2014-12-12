@@ -19,6 +19,14 @@ span.navbar-brand strong {
   color: #F37934;
 }
 
+#flash {
+  border: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 a.like {
   font-size: 1.9em;
   color: pink; 
@@ -37,12 +45,8 @@ a.like.liked:hover {
   color: pink;
 }
 
-#flash {
-  border: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+fieldset legend {
+  border-bottom: none;
 }
 
 .select2-container ul.select2-choices {
