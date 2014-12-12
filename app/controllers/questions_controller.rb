@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     if params[:tag_filter]
-      tags = params[:tag_filter].split(',')
+      tags = params[:tag_filter].downcase.split(',')
       @questions = @questions.tagged_with(tags, :any => true)
     end
   end

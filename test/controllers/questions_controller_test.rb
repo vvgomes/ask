@@ -133,7 +133,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'gives me questions by tag' do
-    get :index, :tag_filter => 'programming'
+    get :index, :tag_filter => 'Programming'
     assert assigns(:questions) == [@dude_question]
     assert_template :index
     assert response.code == '200'
