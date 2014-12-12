@@ -23,12 +23,12 @@
     <p class='form-group'>
       <label for="tags">Tags</label>
       <br />
-      <input type="text" id="tags" required />
+      <%= f.text_field :tag_list %>
     </p>
 
     <script>
-      $("#tags").select2({ tags: ["P3", "technical", "OO"] });
-      $("#tags").select2("container").find("ul.select2-choices").addClass('form-control');
+      $('#question_tag_list').select2({ tags: ["P3", "technical", "OO"] });
+      $('#question_tag_list').select2("container").find("ul.select2-choices").addClass('form-control');
     </script>
 
     <p class='form-group'>
