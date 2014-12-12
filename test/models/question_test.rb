@@ -20,4 +20,10 @@ class QuestionTest < ActiveSupport::TestCase
     q.likes << like
     assert q.likes == [like]
   end
+
+  test 'does not accept a question with more than 140 chars' do
+    long_description = 141.times.map{'x'}.join
+    q = Question.new(:user => User.new, :description => long_description)
+    assert !q.valid?
+  end
 end
