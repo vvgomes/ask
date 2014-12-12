@@ -43,3 +43,9 @@ a.like.liked:hover {
   padding-bottom: 5px;
 }
 
+.select2-container ul.select2-choices {
+  min-width: 300px;
+  padding-top: 5px;
+  border: 1px solid #e7e7e7;
+}
+
