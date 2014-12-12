@@ -17,9 +17,9 @@
             <%= link_to q.description, question_path(q) %>
         </em>
         </blockquote>
-        <footer class="panel-footer">
+        <footer class="clearfix panel-footer text-center">
           <%= gravatar_image_tag q.user.email,
-            :class => 'img-circle',
+            :class => 'img-circle pull-left',
             :rel => 'tooltip',
             'data-toggle' => 'tooltip',
             'data-placement' => 'bottom',
@@ -28,11 +28,9 @@
             :gravatar => { :secure => true, :size => 30 }
           %>
 
-          <!-- tags will go here -->
-
           <% like_config = like_or_dislike(q) %>
           <%= link_to(like_config[:path], :method => like_config[:method],
-            :class => "pull-right like #{like_config[:class]}") do %>
+           :class => "pull-right like #{like_config[:class]}") do %>
             <span
               class="glyphicon glyphicon-heart"
               rel="tooltip"
@@ -43,6 +41,11 @@
             ></span>
           <% end %>
 
+          <ul class="list-inline tags">
+            <% q.tag_list.each do |tag| %>
+              <li class="label label-primary">#<%= tag %></li>
+            <% end %>
+          </ul>
         </footer>
       </article>
     </li>
