@@ -14,6 +14,7 @@ gem 'omniauth-saml'
 gem 'valid_email'
 gem 'gravatar_image_tag'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'will_paginate', '~> 3.0'
 
 group :test do
   gem 'sqlite3'
