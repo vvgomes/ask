@@ -89,7 +89,7 @@
     </div><!-- container-fluid -->
   </nav>
 
-  <main class="container-fluid">
+  <main>
 
     <% if flash[:success] %>
       <section class="row container col-xs-12">
@@ -119,7 +119,7 @@
       </section>
     <% end %>
 
-    <div class="row container col-xs-12">
+    <div class="col-xs-12">
       <%= yield %>
     </div>
   </main>
