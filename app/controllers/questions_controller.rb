@@ -88,8 +88,7 @@ class QuestionsController < ApplicationController
   end
 
   def apply_order(scope)
-    #scope.order(:created_at => :desc)
-    scope
+    scope.order(:created_at => :desc)
   end
 
   def apply_pagination(scope)
