@@ -2,11 +2,12 @@ class QuestionsController < ApplicationController
   before_filter :authenticate!
 
   def index
-    @questions = Question.all
-    if params[:tag_filter]
-      tags = params[:tag_filter].downcase.split(',')
-      @questions = @questions.tagged_with(tags, :any => true)
-    end
+    @questions = 
+      apply_pagination(
+        apply_order(
+          apply_tags(Question)
+        )
+      )
   end
 
   def show
@@ -57,12 +58,41 @@ class QuestionsController < ApplicationController
   end
 
   def mine
-    @questions = Question.where(:user => current_user)
+    @questions = 
+      apply_pagination(
+        apply_order(
+          apply_tags(
+            Question.where(:user => current_user)
+          )
+        )
+      )
     render :index
   end
 
   def favorite
-    @questions = Like.where(:user => current_user).map(&:question)
+    @questions = 
+      apply_pagination(
+        apply_order(
+          apply_tags(current_user.favorites)
+        )
+      )
     render :index
+  end
+
+  private
+
+  def apply_tags(scope)
+    return scope unless params[:tag_filter]
+    tags = params[:tag_filter].downcase.split(',')
+    scope.tagged_with(tags, :any => true)
+  end
+
+  def apply_order(scope)
+    #scope.order(:created_at => :desc)
+    scope
+  end
+
+  def apply_pagination(scope)
+    scope.paginate(:page => params[:page], :per_page => 30)
   end
 end

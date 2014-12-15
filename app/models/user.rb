@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :likes, :dependent => :destroy
+  has_many :favorites, :through => :likes, :source => :question
 
   validates :email,
     :presence => true,
