@@ -53,8 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def mine
-    scope = Question.where(:user => current_user)
-    @questions = build_question_list(scope)
+    @questions = build_question_list(current_user.questions)
     render :index
   end
 
