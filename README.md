@@ -2,7 +2,7 @@
 
 Ask is a web application to help people to save, share, and like their favorite interview question. The application is currently intended to be used internally at [ThoughtWorks®][tw], so useres will have to authenticate using their Thoughtworks [Okta][okta] credentials.
 
-![screenshot]
+![App Screenshot](http://bit.ly/1896btH)
 
 ## Stack
 
