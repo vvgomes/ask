@@ -6,16 +6,16 @@ Ask is a web application to help people saving, sharing, and liking their favori
 
 ## Stack
 
-Ask is a very minimal [Ruby on Rails](https://github.com/rails/rails) application. All depencies specified in the Gemfile). For data storage it uses [PostgreSQL](http://postgresql.org) database in development & production environments and [Sqlite3](http://sqlite.org) in test environment.
+Ask is a very minimal [Ruby on Rails](https://github.com/rails/rails) application. All depencies are specified in the Gemfile. For data storage it uses [PostgreSQL](http://postgresql.org) database in development & production environments and [Sqlite3](http://sqlite.org) in test environment.
 
-There is a [Snap-CI](http://snap-ci.com) which runs the tests and deploys the app to [Heroku](http://heroku.com). Here are the links:
+There is a [Snap-CI](http://snap-ci.com) build which runs the tests and deploys the app to [Heroku](http://heroku.com). Here are the links:
 
 * [CI](https://snap-ci.com/vvgomes/ask/branch/master)
 * [Live app](https://askapp.herokuapp.com)
 
 ## Building
 
-After cloning the repository, make sure you have the specified Ruby version & Bundler gem installed. Then run
+After cloning the repository, make sure you have the specified Ruby version & [Bundler](http://bundler.io) installed. Then run:
 
 ```
 $ bundle install
