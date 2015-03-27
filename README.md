@@ -34,7 +34,7 @@ Ensure you have all the tests passing:
 $ rake
 ```
 
-And, finally, run the rails server:
+Before running the server you will have to set two environment vars: `IDP_SSO_TARGET_URL` and `IDP_CERT_FINGERPRINT`. Assuming you have an [Okta Preview](https://thoughtworks-admin.oktapreview.com) account, get the target url & certificate from the *okta-localhost* app to run in development mode. Finally, run the rails server:
 
 ```
 $ rails s -p 4567
