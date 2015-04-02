@@ -2,7 +2,7 @@
 
 Ask is a web application to help people saving, sharing, and liking their favorite interview questions. The application is currently intended to be used internally at [ThoughtWorks®](http://www.thoughtworks.com), so users are required to authenticate using their Thoughtworks [Okta](https://thoughtworks.okta.com) credentials.
 
-![App Screenshot](http://bit.ly/1896btH)
+![App Screenshot](https://d1ro8r1rbfn3jf.cloudfront.net/ms_8610/oFU8ekpXkKDtl8d2urQvN3cGjnMGgP/Ask.png?Expires=1428081035&Signature=MREBcka8ClCSgLF20YRFn9STgdNXP4OEdpys4rzyQpGlNRZogQwhlyW9fu1NuURpBHfdP6ksXg-6WreFuqnoaTSlY9DvgoNoFmJwzRzIVRUtFIOvEgvE~fD~f9cc2SdYy3pm1M1f0YSFv85hfPtPCdLdH09Q37ch4BraujL9khVi3z~U~pyC1-eLXGjBTGx5oo7ZWR2U4aEWnWy6qBl18aQ85K4a9kg1sCv48b7-j35dHKcVGfoOTsov6xkm3uQNeAPLWuTy65yvgCGoNkuczBMaklarMabj2ofF0JnK5zMcMRYFV6adpl7~2D4fMpxniJz8yHgXUDzPEx16OOLpsw__&Key-Pair-Id=APKAJHEJJBIZWFB73RSA)
 
 ## Stack
 
