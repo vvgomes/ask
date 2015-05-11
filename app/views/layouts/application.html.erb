@@ -65,6 +65,14 @@
           <% end %>
         <% end %>
 
+        <div class="nav navbar-nav nav-add-question">
+          <%= link_to new_question_path, :class => 'btn btn-info btn-sm' do %>
+            <span class="glyphicon glyphicon-plus"></span>
+            &nbsp;
+            <span>Add Question</span>
+          <% end %>
+        </div>
+
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

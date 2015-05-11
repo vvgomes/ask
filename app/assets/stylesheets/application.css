@@ -19,6 +19,10 @@ span.navbar-brand strong {
   color: #F37934;
 }
 
+div.nav-add-question {
+  padding: 9px;
+}
+
 #flash {
   border: 0;
   margin-top: 5px;
