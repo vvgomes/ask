@@ -44,7 +44,7 @@ class QuestionsControllerTest < ActionController::TestCase
     post :create, :question => {
       :description => 'Why?',
       :tag_list => 'oo,ruby'
-    } 
+    }
     assert Question.count == 3
     last = Question.last
     assert last.user = @me
@@ -54,7 +54,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'does not create a question with invalid params' do
-    post :create, :question => { :description => '' } 
+    post :create, :question => { :description => '' }
     assert Question.count == 2
     assert response.code == '200'
   end
@@ -75,7 +75,7 @@ class QuestionsControllerTest < ActionController::TestCase
       :question => {
         :description => 'Do you believe in Buda?',
         :tag_list => 'religion,buda'
-      } 
+      }
     assert Question.count == 2
     updated = Question.find(@my_question.id)
     assert updated.description == 'Do you believe in Buda?'
@@ -86,8 +86,8 @@ class QuestionsControllerTest < ActionController::TestCase
   test 'does not update a question with invalid params' do
     put :update, :id => @my_question.id,
       :question => {
-        :description => '' 
-      } 
+        :description => ''
+      }
     assert Question.count == 2
     same = Question.find(@my_question.id)
     assert same.description == 'Do you believe in God?'
@@ -97,8 +97,8 @@ class QuestionsControllerTest < ActionController::TestCase
   test 'does not update a question from someone else' do
     put :update, :id => @dude_question.id,
       :question => {
-        :description => '' 
-      } 
+        :description => ''
+      }
     assert Question.count == 2
     same = Question.find(@my_question.id)
     assert same.description == 'Do you believe in God?'
@@ -134,6 +134,13 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test 'gives me questions by tag' do
     get :index, :tag_filter => 'Programming'
+    assert assigns(:questions) == [@dude_question]
+    assert_template :index
+    assert response.code == '200'
+  end
+
+  test 'gives me the questions by dude' do
+    get :by, :email => 'dude@tw.com'
     assert assigns(:questions) == [@dude_question]
     assert_template :index
     assert response.code == '200'

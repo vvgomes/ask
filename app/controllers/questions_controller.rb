@@ -62,6 +62,11 @@ class QuestionsController < ApplicationController
     render :index
   end
 
+  def by
+    @questions = build_question_list(User.find_by_email(params[:email]).questions)
+    render :index
+  end
+
   private
 
   def build_question_list(scope=Question)
