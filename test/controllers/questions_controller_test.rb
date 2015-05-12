@@ -145,4 +145,12 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_template :index
     assert response.code == '200'
   end
+
+  test 'gives me the questions favorited by dude' do
+    Like.create(:user => @dude, :question => @my_question)
+    get :favorited_by, :email => 'dude@tw.com'
+    assert assigns(:questions) == [@my_question]
+    assert_template :index
+    assert response.code == '200'
+  end
 end

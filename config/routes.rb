@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     :as => 'questions_by',
     :via => :get
 
+  match 'favorited_by/:email',
+    :email => /.*/,
+    :to => 'questions#favorited_by',
+    :as => 'questions_favorited_by',
+    :via => :get
+
   resources :likes, :only => [:create, :destroy]
 
   root :to => 'application#index'

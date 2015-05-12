@@ -67,6 +67,11 @@ class QuestionsController < ApplicationController
     render :index
   end
 
+  def favorited_by
+    @questions = build_question_list(User.find_by_email(params[:email]).favorites)
+    render :index
+  end
+
   private
 
   def build_question_list(scope=Question)
