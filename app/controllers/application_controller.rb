@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :forbid!
 
   def index
-    redirect_to questions_path
+    if current_user
+      redirect_to questions_path
+    else
+      render :layout => 'login'
+    end
   end
 
   private
@@ -12,8 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    current_user || 
-    redirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
+    return if current_user 
+    #redirect_to("/auth/saml?redirectUrl=#{URI::encode(request.path)}")
+    original = request.env['HTTP_REFERER']
+    redirect_to(root_path, :redirectUrl => request.path)
   end
 
   def forbid!
