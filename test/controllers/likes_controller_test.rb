@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LikesControllerTest < ActionController::TestCase
   setup do
-    @me = User.create(:email => 'me@tw.com')
+    @me = User.create(:email => 'me@thoughtworks.com')
     @liked_question = Question.create({
       :user => @me,
       :description => 'What is your favorite language?'

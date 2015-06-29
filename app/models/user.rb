@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   validates :email,
     :presence => true,
     :email => true,
-    :uniqueness => true
+    :uniqueness => true,
+    :format => /@thoughtworks\.com/
 
   def self.from_omniauth(auth)
     email = auth[:extra][:raw_info][:email]

@@ -2,13 +2,13 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
   setup do
-    @me = User.create(:email => 'me@tw.com')
+    @me = User.create(:email => 'me@thoughtworks.com')
     @my_question = Question.create({
       :user => @me,
       :description => 'Do you believe in God?',
       :tag_list => ['p3', 'religion']
     })
-    @dude = User.create(:email => 'dude@tw.com')
+    @dude = User.create(:email => 'u@thoughtworks.com')
     @dude_question = Question.create({
       :user => @dude,
       :description => 'What is your favorite language?',
@@ -140,7 +140,7 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test 'gives me the questions by dude' do
-    get :by, :email => 'dude@tw.com'
+    get :by, :email => 'u@thoughtworks.com'
     assert assigns(:questions) == [@dude_question]
     assert_template :index
     assert response.code == '200'
@@ -148,7 +148,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test 'gives me the questions favorited by dude' do
     Like.create(:user => @dude, :question => @my_question)
-    get :favorited_by, :email => 'dude@tw.com'
+    get :favorited_by, :email => 'u@thoughtworks.com'
     assert assigns(:questions) == [@my_question]
     assert_template :index
     assert response.code == '200'

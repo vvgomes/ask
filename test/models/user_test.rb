@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'must have an email to be valid' do
     assert !User.new.valid?
-    assert User.new(:email => 'dude@tw.com').valid?
+    assert User.new(:email => 'u@thoughtworks.com').valid?
   end
 
   test 'must have a valid email' do
@@ -15,20 +15,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'cannot have the same email as an existing user' do
-    User.create(:email => 'dude@tw.com')
-    assert !User.new(:email => 'dude@tw.com').valid?
+    User.create(:email => 'u@thoughtworks.com')
+    assert !User.new(:email => 'u@thoughtworks.com').valid?
+  end
+
+  test 'cannot have a non-thoughtworks email' do
+    assert !User.new(:email => 'u@gmail.com').valid?
   end
 
   test 'is created from omniauth' do
-    User.from_omniauth({ :extra => { :raw_info => { :email => 'cv@thoughtworks.com' } } })
-    assert User.last.email == 'cv@thoughtworks.com'
+    User.from_omniauth({ :extra => { :raw_info => { :email => 'u@thoughtworks.com' } } })
+    assert User.last.email == 'u@thoughtworks.com'
     assert User.count == 1
   end
 
   test 'is found by email' do
-    User.create(:email => 'cv@thoughtworks.com')
-    user = User.from_omniauth({ :extra => { :raw_info => { :email => 'cv@thoughtworks.com' } } })
-    assert User.last.email == 'cv@thoughtworks.com'
+    User.create(:email => 'u@thoughtworks.com')
+    user = User.from_omniauth({ :extra => { :raw_info => { :email => 'u@thoughtworks.com' } } })
+    assert User.last.email == 'u@thoughtworks.com'
     assert User.count == 1
   end
 
@@ -40,8 +44,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'has a username based on email' do
-    user = User.new(:email => 'dude@tw.com')
-    assert user.username == 'dude'
+    user = User.new(:email => 'u@thoughtworks.com')
+    assert user.username == 'u'
   end
 
   test 'has many likes' do
@@ -56,7 +60,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'knows about a question she likes' do
-    user = User.create(:email => 'dude@tw.com')
+    user = User.create(:email => 'u@thoughtworks.com')
     question = Question.create(:description => 'Why?', :user => user)
     Like.create(:user => user, :question => question)
     assert user.likes?(question)

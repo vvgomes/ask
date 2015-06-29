@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ApplicationControllerTest < ActionController::TestCase
   setup do
-    session[:user_id] = User.create(:email => 'dude@tw.com').id
+    session[:user_id] = User.create(:email => 'u@thoughtworks.com').id
   end
 
   test 'shows home page' do
