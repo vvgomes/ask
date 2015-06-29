@@ -2,11 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :forbid!
 
   def index
-    if current_user
-      redirect_to questions_path
-    else
-      render :layout => 'login'
-    end
+    redirect_to questions_path if current_user
   end
 
   private

@@ -3,8 +3,9 @@
 <head>
   <title>Ask</title>
 
-  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/lumen/bootstrap.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/lumen/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -34,68 +35,69 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-        <ul class="nav navbar-nav">
-          <li class="<%= 'active' if request.env['PATH_INFO'] == questions_path && !params[:tag_filter] %>">
-            <a href="<%= root_path %>">
-              <span class="glyphicon glyphicon-home"></span>
-              &nbsp;
-              <span>Home</span>
-            </a>
-          </li>
-          <li class="<%= 'active' if request.env['PATH_INFO'] == my_questions_path %>">
-            <a href="<%= my_questions_path %>">
-              <span class="glyphicon glyphicon-user"></span>
-              &nbsp;
-              <span>My Questions</span>
-            </a>
-          </li>
-          <li class="<%= 'active' if request.env['PATH_INFO'] == favorite_questions_path %>">
-            <a href="<%= favorite_questions_path %>">
-              <span class="glyphicon glyphicon-heart"></span>
-              &nbsp;
-              <span>Favorite</span>
-            </a>
-          </li>
-        </ul>
-
-        <%= form_tag(questions_path, :method => 'get', :class => 'navbar-form navbar-left', :role => 'search') do %>
-          <%= text_field_tag(:tag_filter, params[:tag_filter], :placeholder => 'Tags') %>
-          <%= button_tag(:type => 'submit', :class => 'btn btn-default') do %>
-            <span class="glyphicon glyphicon-search"></span>
-          <% end %>
-        <% end %>
-
-        <div class="nav navbar-nav nav-add-question">
-          <%= link_to new_question_path, :class => 'btn btn-info btn-sm' do %>
-            <span class="glyphicon glyphicon-plus"></span>
-            &nbsp;
-            <span>Add Question</span>
-          <% end %>
-        </div>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <%= gravatar_image_tag current_user.email,
-                :alt => current_user.username,
-                :title => current_user.username,
-                :class => 'img-circle',
-                :gravatar => { :secure => true, :size => 17 }
-              %>
-              &nbsp;
-              <span class="current-user"><%= current_user.username %></span>
-              <span class="caret"></span>
+        <% if current_user %>
+          <ul class="nav navbar-nav">
+            <li class="<%= 'active' if request.env['PATH_INFO'] == questions_path && !params[:tag_filter] %>">
+              <a href="<%= root_path %>">
+                <span class="glyphicon glyphicon-home"></span>
+                &nbsp;
+                <span>Home</span>
               </a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <%= link_to signout_path do %>
-                  <span class="glyphicon glyphicon-log-out"></span> <span>Sign Out</span>
-                <% end %>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            </li>
+            <li class="<%= 'active' if request.env['PATH_INFO'] == my_questions_path %>">
+              <a href="<%= my_questions_path %>">
+                <span class="glyphicon glyphicon-user"></span>
+                &nbsp;
+                <span>My Questions</span>
+              </a>
+            </li>
+            <li class="<%= 'active' if request.env['PATH_INFO'] == favorite_questions_path %>">
+              <a href="<%= favorite_questions_path %>">
+                <span class="glyphicon glyphicon-heart"></span>
+                &nbsp;
+                <span>Favorite</span>
+              </a>
+            </li>
+          </ul>
+
+          <%= form_tag(questions_path, :method => 'get', :class => 'navbar-form navbar-left', :role => 'search') do %>
+            <%= text_field_tag(:tag_filter, params[:tag_filter], :placeholder => 'Tags') %>
+            <%= button_tag(:type => 'submit', :class => 'btn btn-default') do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+          <% end %>
+
+          <div class="nav navbar-nav nav-add-question">
+            <%= link_to new_question_path, :class => 'btn btn-info btn-sm' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+              &nbsp;
+              <span>Add Question</span>
+            <% end %>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <%= gravatar_image_tag current_user.email,
+                  :alt => current_user.username,
+                  :title => current_user.username,
+                  :class => 'img-circle',
+                  :gravatar => { :secure => true, :size => 17 }
+                %>
+                &nbsp;
+                <span class="current-user"><%= current_user.username %></span>
+                <span class="caret"></span>
+                </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <%= link_to signout_path do %>
+                    <span class="glyphicon glyphicon-log-out"></span> <span>Sign Out</span>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        <% end %>
       </div><!-- /.navbar-collapse -->
 
     </div><!-- container-fluid -->
@@ -136,7 +138,7 @@
     </div>
   </main>
 
-  <footer class="row container col-xs-12">
+  <footer class="col-xs-12">
     <hr />
   </footer>
 

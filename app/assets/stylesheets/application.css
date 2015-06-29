@@ -19,6 +19,10 @@ span.navbar-brand strong {
   color: #F37934;
 }
 
+#sign_in .fa {
+  margin-right: 5px;
+}
+
 div.nav-add-question {
   padding: 9px;
 }
