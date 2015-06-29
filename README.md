@@ -55,8 +55,9 @@ Once that's done, simply run `$ foreman start`. That will spinup all the process
 ## Contributing
 
 Feel free to fork the repository and submit pull-requests. People responsible for currently maintaing that:
-* @vvgomes
-* @gregoriomelo
+
+* [vvgomes](http://github.com/vvgomes)
+* [gregoriomelo](http://github.com/gregoriomelo)
 
 
 ---
