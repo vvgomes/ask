@@ -22,7 +22,7 @@
     </p>
 
     <p class='form-group'>
-      <%= f.text_field :tag_list, :placeholder => 'Tags' %>
+      <%= f.text_field :tag_list, :placeholder => 'Tags', :value => @question.tag_list.join(',')  %>
     </p>
 
     <p class='form-group'>
