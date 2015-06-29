@@ -1,6 +1,6 @@
 # Ask
 
-Ask is a web application to help people saving, sharing, and liking their favorite interview questions. The application is currently intended to be used internally at [ThoughtWorks®](http://www.thoughtworks.com), so users are required to authenticate using their Thoughtworks [Okta](https://thoughtworks.okta.com) credentials.
+Ask is a web application to help people saving, sharing, and liking their favorite interview questions. The application is currently intended to be used internally at [ThoughtWorks®](http://www.thoughtworks.com), so users are required to authenticate using their Thoughtworks credentials.
 
 ![App Screenshot](https://raw.githubusercontent.com/vvgomes/ask/master/doc/screenshot.png)
 
@@ -34,14 +34,30 @@ Ensure you have all the tests passing:
 $ rake
 ```
 
-Before running the server you will have to set two environment vars: `IDP_SSO_TARGET_URL` and `IDP_CERT_FINGERPRINT`. Assuming you have an [Okta Preview](https://thoughtworks-admin.oktapreview.com) account, get the target url & certificate from the *okta-localhost* app to run in development mode. Finally, run the rails server:
+Before running the server you will have to setup Google authentication. You'll need two environment vars: `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. Intructions on how to create them can be found [here](https://developers.google.com/identity/sign-in/web/devconsole-project).
+
+In case those environment variables conflict with existing ones you might have, you can load them only in the context of the project with [direnv](http://direnv.net/), which will load the contents of a git ignored `.secrets` file. There is a `.secrets.sample` you can copy to setup yours.
+
+Finally, run the rails server:
 
 ```
-$ rails s -p 4567
+$ rails s
 ```
 
-Note that you need to specify the port because the server will connect to the [Okta Sample App](https://thoughtworks.oktapreview.com/app/UserHome) to perform authentication for localhost. You'll need an Okta Preview account to successfuly sign-in (a regular Okta account won't work).
+As mentioned above, we've been deploying the live instance of the app to (Heroku)[http://www.heroku.com], so, in order to better simulate the production locally, you'll need **Foreman**, which comes with the **heroku toolbelt** software:
+
+```
+$ brew install heroku-toolbelt
+```
+
+Once that's done, simply run `$ foreman start`. That will spinup all the processes required to run the application, which are describe in the `Procfile`. The application will be available on port 5000 by default.
 
 ## Contributing
 
-Feel free to fork the repository and submit pull-requests.
+Feel free to fork the repository and submit pull-requests. People responsible for currently maintaing that:
+* @vvgomes
+* @gregoriomelo
+
+
+---
+
