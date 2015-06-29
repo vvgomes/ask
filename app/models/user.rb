@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     :uniqueness => true
 
   def self.from_omniauth(auth)
-    email = auth[:uid]
+    email = auth[:extra][:raw_info][:email]
     where(:email => email).first_or_initialize.tap do |user|
       user.email = email
       user.save!

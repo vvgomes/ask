@@ -20,15 +20,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'is created from omniauth' do
-    User.from_omniauth({:uid => 'dude@tw.com'})
-    assert User.last.email == 'dude@tw.com'
+    User.from_omniauth({ :extra => { :raw_info => { :email => 'cv@thoughtworks.com' } } })
+    assert User.last.email == 'cv@thoughtworks.com'
     assert User.count == 1
   end
 
   test 'is found by email' do
-    User.create(:email => 'dude@tw.com')
-    user = User.from_omniauth({:uid => 'dude@tw.com'})
-    assert user.email == 'dude@tw.com'
+    User.create(:email => 'cv@thoughtworks.com')
+    user = User.from_omniauth({ :extra => { :raw_info => { :email => 'cv@thoughtworks.com' } } })
+    assert User.last.email == 'cv@thoughtworks.com'
     assert User.count == 1
   end
 

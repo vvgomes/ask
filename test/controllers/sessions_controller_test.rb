@@ -3,13 +3,13 @@ require 'test_helper'
 class SessionsControllerTest < ActionController::TestCase
   setup do
     User.delete_all
-    @dude = User.create(:email => 'dude@tw.com')
+    @dude = User.create(:email => 'cv@gmail.com')
   end
 
   test '#create' do
-    auth = { 'omniauth.auth' => { :uid => 'dude@tw.com' } }
+    auth = { 'omniauth.auth' => { :extra => { :raw_info => { :email => 'cv@gmail.com' } } } }
     SessionsController.any_instance.stubs(:env).returns(auth)
-    get :create, :provider => :saml
+    get :create, :provider => :google_oauth2
     assert response.code == '302'
     assert session[:user_id] == @dude.id
   end
