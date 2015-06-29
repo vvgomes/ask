@@ -35,6 +35,10 @@ div.nav-add-question {
   padding-bottom: 5px;
 }
 
+.question-text {
+  height: 100px;
+}
+
 a.like {
   font-size: 1.9em;
   color: pink; 
